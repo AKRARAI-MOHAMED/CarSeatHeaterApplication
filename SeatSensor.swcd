@@ -1,0 +1,34 @@
+package SWc.SeatSensor
+
+import SWc.Interfaces.IsensorIO
+import SWc.Interfaces.IseatStatus
+import SeatSensorApp.SeatSensorAppBehavior
+component application SeatSensorApp {
+	
+	ports{
+		sender Status provides IseatStatus
+		
+		receiver SensorIO requires IsensorIO
+		
+	}
+	
+}
+
+internalBehavior SeatSensorAppBehavior for SeatSensorApp {
+	
+	runnable SeatSensorMain [1.0] {
+		
+		timingEvent 0.1
+		
+		dataReadAccess SensorIO.SensorValue
+		
+		dataWriteAccess Status.PassengerOnSeat			
+		
+		}
+	
+}
+
+implementation SeatSensorAppImplementationApp for SeatSensorAppBehavior {
+	language c
+	codeDescriptor "src"
+}

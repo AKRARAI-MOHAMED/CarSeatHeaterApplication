@@ -1,0 +1,20 @@
+package SWc.EcuExtarct3
+
+import SWc.SeatSensor.SeatSensorApp
+
+composition thirdEcuExtract {
+	
+	prototype SeatSensorApp SeatSensorRight
+	
+	ports{
+		
+		provides SeatSensorRight.Status SSRSP
+		
+		requires SeatSensorRight.SensorIO SSRSIOP
+		
+	}
+	
+	
+	
+}
+

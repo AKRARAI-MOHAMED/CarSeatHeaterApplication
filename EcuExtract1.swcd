@@ -1,0 +1,42 @@
+package SWc.EcuExtract1
+
+import SWc.SeatHeatingController.SeatHeatingCrtl
+import SWc.SeatSensor.SeatSensorApp
+import SWc.SeatHeatingController.SeatHeatingCrtl.RightSeatStatus
+import SWc.SeatHeatingController.SeatHeatingCrtl.LefttSeatStatus
+import SWc.HeatRegulator.HeatRegulatorApp
+import SWc.SeatHeater.*
+import SWc.SeatHeatingController.SeatHeatingCrtl.HeaterLevels
+
+
+
+
+composition FirstEcuComposition {
+	
+	prototype SeatHeatingCrtl TheSeatHeatingCrtlmember
+	
+	prototype HeatRegulatorApp HeatRegulatorProtype 
+	
+	prototype SeatHeaterApp SeatHeaterPrototype
+	
+	ports {
+		
+		requires TheSeatHeatingCrtlmember.LefttSeatStatus LSSP
+		
+		requires TheSeatHeatingCrtlmember.RightSeatStatus RSSP
+		
+		requires HeatRegulatorProtype.RegulatorIO RIOP
+		
+		provides SeatHeaterPrototype.LeftSeatHeaterIO LSHIOP
+		
+		provides SeatHeaterPrototype.RightSeatHeaterIO RSHIOP
+		
+	}
+	
+	connect TheSeatHeatingCrtlmember.RegulatorPosition to HeatRegulatorProtype.Position
+	
+	connect SeatHeaterPrototype.Levels to TheSeatHeatingCrtlmember.HeaterLevels
+	
+	}
+
+	

@@ -1,0 +1,15 @@
+package SWc.EcuExtract1
+
+
+
+
+
+system SysEcuExtract1 {	
+	
+	rootComposition FirstEcuComposition
+	
+	
+	
+}
+
+

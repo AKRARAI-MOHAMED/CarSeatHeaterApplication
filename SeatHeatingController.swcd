@@ -1,0 +1,67 @@
+package SWc.SeatHeatingController
+
+import SWc.Interfaces.IseatStatus
+import SWc.Interfaces.IheaterLevel
+import SWc.Interfaces.IregulatorPosition
+import SeatHeatingCrtl.SeatHeatingCrtlBehavior
+import SWc.Datas.Int32
+
+ component application SeatHeatingCrtl {
+ 
+         ports {
+         
+                 server RegulatorPosition provides IregulatorPosition 
+                 client HeaterLevels requires IheaterLevel
+                 receiver RightSeatStatus requires IseatStatus 
+                 receiver LefttSeatStatus requires IseatStatus
+               
+               }
+               
+}
+
+internalBehavior SeatHeatingCrtlBehavior for SeatHeatingCrtl {
+	     
+	     var Int32 implicit InterRunnableVariable
+         
+         runnable SeatHeatingControllerMain [1.0] {
+         	    
+         	    readVariables{
+         	    	
+         	    	InterRunnableVariable
+         	    	
+         	    }
+         	    
+		        dataReadAccess LefttSeatStatus.PassengerOnSeat
+		        
+		        dataReadAccess RightSeatStatus.PassengerOnSeat 
+		        
+		        serverCallPoint asynchronous HeaterLevels.SetHeat
+		        
+		        timingEvent 0.1
+	           
+	           }
+	           
+         runnable concurrent SeatHeatingControllerSetPosition [1.0] {         	    
+         	    
+		        writtenVariables{
+		        	
+		           InterRunnableVariable
+		        	
+		        }
+		        
+		        operationInvokedEvent RegulatorPosition.SetPosition
+		        
+		        
+	           }
+
+}
+
+implementation SeatHeatingCrtlImplemantaion for SeatHeatingCrtlBehavior{
+	
+	    language c
+        
+        codeDescriptor "src"
+
+}
+
+

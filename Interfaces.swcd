@@ -1,0 +1,37 @@
+package SWc.Interfaces
+
+import SWc.Datas.*
+
+interface senderReceiver IsensorIO {
+data Boolean SensorValue
+}
+
+interface senderReceiver IheaterIO{
+	data Int32 HeaterValue
+}
+
+interface senderReceiver IregulatorIO{
+	data Int32 RegulatorValue
+}
+
+interface senderReceiver IheaterIO{
+	data Int32 HeaterValue
+}
+
+interface senderReceiver IseatStatus{
+	data Boolean PassengerOnSeat
+}
+
+interface clientServer IheaterLevel{
+  operation SetHeat {
+			in Int32 LeftHeaterLevel
+			in Int32 RightHeaterLevel
+		}
+}
+
+interface clientServer IregulatorPosition{
+  operation SetPosition {
+			in Int32 position
+		}
+}
+

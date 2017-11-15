@@ -1,0 +1,19 @@
+package SWc.EcuExtract2
+
+import SWc.SeatSensor.SeatSensorApp
+
+
+composition SecondEcuExtract {
+	
+	prototype SeatSensorApp SeatSensorLeft
+	
+	ports{
+		
+		provides SeatSensorLeft.Status SSLSP
+		
+		requires SeatSensorLeft.SensorIO SSLIOP
+		
+	} 
+	
+	
+	}

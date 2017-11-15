@@ -1,0 +1,9 @@
+package SWc.Datas
+
+import BaseTypes.uint32
+import BaseTypes.uboolean
+
+int impl Int32 extends uint32
+boolean impl Boolean extends uboolean
+
+

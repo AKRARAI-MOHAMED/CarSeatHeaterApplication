@@ -1,0 +1,38 @@
+package SWc.SeatHeater
+
+import SWc.Interfaces.IheaterLevel
+import SWc.Interfaces.IheaterIO
+import SeatHeaterApp.SeatHeaterAppBehavior
+component application SeatHeaterApp {
+	
+	ports{
+		
+		server Levels provides IheaterLevel
+		
+		sender RightSeatHeaterIO provides IheaterIO
+		
+		sender LeftSeatHeaterIO  provides IheaterIO
+		
+	}
+}
+
+internalBehavior SeatHeaterAppBehavior for SeatHeaterApp{
+	
+	runnable SeatHeaterMain [1.0] {
+		
+		operationInvokedEvent Levels.SetHeat
+		
+		dataWriteAccess LeftSeatHeaterIO.HeaterValue
+		
+		dataWriteAccess RightSeatHeaterIO.HeaterValue
+			
+		}
+	
+	
+	
+}
+
+implementation SeatHeaterAppImplemenatation for SeatHeaterAppBehavior {
+	language c
+	codeDescriptor "src"
+}

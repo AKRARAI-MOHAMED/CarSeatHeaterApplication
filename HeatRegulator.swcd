@@ -1,0 +1,36 @@
+package SWc.HeatRegulator
+
+import SWc.Interfaces.IsensorIO
+import SWc.Interfaces.IregulatorPosition
+import SWc.Interfaces.IregulatorIO
+import HeatRegulatorApp.HeatRegulatorAppBehavior
+component application HeatRegulatorApp {
+	
+	ports{
+		
+		receiver RegulatorIO requires IregulatorIO
+		
+		client Position requires IregulatorPosition
+		
+	}
+	
+}
+
+internalBehavior HeatRegulatorAppBehavior for HeatRegulatorApp {
+	
+	runnable HeatRegulatorMain [1.0] {
+		
+		timingEvent 0.1
+		
+		dataReadAccess RegulatorIO.RegulatorValue
+		
+		serverCallPoint asynchronous Position.SetPosition
+			
+		}
+	
+}
+
+implementation HeatRegulatorAppImplementation for HeatRegulatorAppBehavior {
+	language c
+	codeDescriptor "src"
+}

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<AUTOSAR xmlns="http://autosar.org/schema/r4.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://autosar.org/schema/r4.0 autosar_4-2-2.xsd">
+  <AR-PACKAGES>
+    <AR-PACKAGE UUID="fd81c66d-2ec3-4f5c-9fa7-555911ad9fb2">
+      <SHORT-NAME>BaseTypes</SHORT-NAME>
+      <ELEMENTS>
+        <SW-BASE-TYPE>
+          <SHORT-NAME>uint32</SHORT-NAME>
+          <CATEGORY>FIXED_LENTGH</CATEGORY>
+          <BASE-TYPE-SIZE>32</BASE-TYPE-SIZE>
+          <BASE-TYPE-ENCODING>NONE</BASE-TYPE-ENCODING>
+          <NATIVE-DECLARATION>uint32</NATIVE-DECLARATION>
+        </SW-BASE-TYPE>
+        <SW-BASE-TYPE>
+          <SHORT-NAME>uboolean</SHORT-NAME>
+          <CATEGORY>FIXED_LENTGH</CATEGORY>
+          <BASE-TYPE-SIZE>8</BASE-TYPE-SIZE>
+          <BASE-TYPE-ENCODING>BOOLEAN</BASE-TYPE-ENCODING>
+        </SW-BASE-TYPE>
+      </ELEMENTS>
+    </AR-PACKAGE>
+  </AR-PACKAGES>
+</AUTOSAR>
